@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <!-- Favicon -->
+   <link rel="icon" href="\images\graduation-cap-svgrepo-com.svg" type="image/svg">
+  <style>
+    @media (max-width: 640px) {
+      body {
+        font-size: 0.875rem;
+      }
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .payment-btn {
+        width: 100%;
+      }
+    }
+    @media (min-width: 640px) {
+      .payment-btn {
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Checkout Header -->
+  <header class="bg-gray-900 text-white py-6">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+     
+      <h1 class="text-4xl font-semibold">Checkout</h1>
+      <div></div> <!-- Empty div for spacing -->
+    </div>
+  </header>
+
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-semibold text-center mb-6">Complete Your Registration</h2>
+      
+      <!-- Checkout Sections - Left & Right Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+        <!-- Left Section (Program Details & Additional Info) -->
+<div class="hidden md:block bg-white p-6 rounded-lg shadow-lg">
+    <!-- Program Details -->
+    <h3 class="text-2xl font-semibold text-gray-800">Program Details</h3>
+    <div class="mt-4 text-gray-600">
+      <p><strong>Program:</strong> Holiday Tutoring</p>
+      <p><strong>Duration:</strong> 4 Weeks</p>
+      <p><strong>Fee:</strong> $200</p>
+      <hr class="my-4">
+      <p><strong>Total Amount:</strong> $200</p>
+    </div>
+  
+    <!-- Additional Info -->
+    <h3 class="text-2xl font-semibold text-gray-800 mt-6">Why Choose This Program?</h3>
+    <div class="mt-4 text-gray-600">
+      <ul class="list-disc ml-6 space-y-2">
+        <li>Expert tutors with years of experience.</li>
+        <li>Comprehensive curriculum tailored for academic success.</li>
+        <li>Interactive and engaging learning environment.</li>
+        <li>Support materials and regular progress assessments.</li>
+      </ul>
+    </div>
+  
+    <h3 class="text-2xl font-semibold text-gray-800 mt-6">Contact Information</h3>
+    <div class="mt-4 text-gray-600">
+      <p>If you have any questions, feel free to contact us:</p>
+      <p><strong>Email:</strong> support@tutoringprogram.com</p>
+      <p><strong>Phone:</strong> +1 234 567 890</p>
+    </div>
+  </div>
+  
+
+        <!-- Right Section (Payment Methods) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold text-gray-800">Payment Methods</h3>
+
+          <!-- Parent and Student Info Section -->
+          <div class="mt-6">
+            <label for="parent-name" class="block text-gray-700">Parent's Name:</label>
+            <input type="text" id="parent-name" name="parent-name" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Parent's Name">
+
+            <label for="student-name" class="block text-gray-700 mt-4">Student's Name:</label>
+            <input type="text" id="student-name" name="student-name" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Student's Name">
+
+            <label for="student-email" class="block text-gray-700 mt-4">Student's Email:</label>
+            <input type="email" id="student-email" name="student-email" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Student's Email">
+          </div>
+<!-- Payment Buttons -->
+<div class="payment-buttons flex flex-wrap justify-center gap-4 mt-8">
+    <button type="button" class="payment-btn bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg hover:bg-green-600 flex items-center gap-2" onclick="showPaymentFields('mpesa')">
+      <i class="fab fa-empire"></i> M-Pesa
+    </button>
+  
+    <button type="button" class="payment-btn bg-blue-500 text-white px-6 py-4 rounded-lg shadow-lg hover:bg-blue-600 flex items-center gap-2" onclick="showPaymentFields('paypal')">
+      <i class="fab fa-paypal"></i> PayPal
+    </button>
+  
+    <button type="button" class="payment-btn bg-purple-500 text-white px-6 py-4 rounded-lg shadow-lg hover:bg-purple-600 flex items-center gap-2" onclick="showPaymentFields('stripe')">
+      <i class="fab fa-stripe-s"></i> Stripe
+    </button>
+  
+    <button type="button" class="payment-btn bg-gray-800 text-white px-6 py-4 rounded-lg shadow-lg hover:bg-gray-900 flex items-center gap-2" onclick="showPaymentFields('card')">
+      <i class="fas fa-credit-card"></i> Credit Card
+    </button>
+  </div>
+  
+  
+          <!-- Dynamic Payment Fields -->
+          <div id="mpesa-fields" class="payment-fields hidden space-y-4 mt-6">
+            <label for="mpesa-phone" class="block text-gray-700">M-Pesa Number:</label>
+            <input type="text" id="mpesa-phone" name="mpesa-phone" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Your M-Pesa Number">
+          </div>
+
+          <div id="paypal-fields" class="payment-fields hidden space-y-4 mt-6">
+            <label for="paypal-email" class="block text-gray-700">PayPal Email:</label>
+            <input type="email" id="paypal-email" name="paypal-email" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Your PayPal Email">
+          </div>
+
+          <div id="stripe-fields" class="payment-fields hidden space-y-4 mt-6">
+            <label for="stripe-card-number" class="block text-gray-700">Card Number:</label>
+            <input type="text" id="stripe-card-number" name="stripe-card-number" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Your Card Number">
+            <label for="stripe-expiry" class="block text-gray-700">Expiration Date:</label>
+            <input type="text" id="stripe-expiry" name="stripe-expiry" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="MM/YY">
+            <label for="stripe-cvc" class="block text-gray-700">CVC:</label>
+            <input type="text" id="stripe-cvc" name="stripe-cvc" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="CVC">
+          </div>
+
+          <div id="card-fields" class="payment-fields hidden space-y-4 mt-6">
+            <label for="card-number" class="block text-gray-700">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Your Card Number">
+            <label for="expiry-date" class="block text-gray-700">Expiration Date:</label>
+            <input type="text" id="expiry-date" name="expiry-date" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="MM/YY">
+            <label for="cvc" class="block text-gray-700">CVC:</label>
+            <input type="text" id="cvc" name="cvc" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="CVC">
+          </div>
+
+          <!-- Complete Registration Button -->
+          <div class="mt-6">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 w-full">Complete Registration</button>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Back Button -->
+      <div class="flex justify-center mt-8">
+        <a href="previous-page.html" class="bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-900 flex items-center">
+          <i class="fas fa-chevron-left mr-2"></i> Back
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Function to show payment fields based on the selected payment method
+    function showPaymentFields(method) {
+      var paymentFields = document.querySelectorAll('.payment-fields');
+      paymentFields.forEach(function(field) {
+        field.classList.add('hidden');
+      });
+      var selectedFields = document.getElementById(method + '-fields');
+      if (selectedFields) {
+        selectedFields.classList.remove('hidden');
+      }
+    }
+  </script>
+
+</body>
+</html>

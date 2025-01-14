@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+ 
+  <!-- Responsive Design for Mobile Devices -->
+  <style>
+    @media (max-width: 768px) {
+      .text-4xl {
+        font-size: 2rem;
+      }
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+      .text-lg {
+        font-size: 1rem;
+      }
+      .px-8 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      .py-3 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+      .grid-cols-1 {
+        grid-template-columns: 1fr;
+      }
+      .grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="font-roboto bg-gray-50">
+
+  <!-- Header Section -->
+  <header class="bg-green-600 py-4 text-white flex justify-between items-center px-6">
+    <!-- Logo Section -->
+    <div class="flex items-center">
+      <img src="https://via.placeholder.com/50" alt="Logo" class="mr-4">
+      <h1 class="text-3xl font-extrabold">Quiz Platform</h1>
+    </div>
+
+    <!-- Leaderboard & Icons -->
+    <div class="flex items-center space-x-4">
+      <a href="#leaderboard" class="text-white hover:text-gray-200 flex items-center">
+        <i class="fas fa-trophy mr-2"></i>Leaderboard
+      </a>
+      <a href="https://facebook.com" target="_blank" class="text-white hover:text-gray-200">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="text-white hover:text-gray-200">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="text-white hover:text-gray-200">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <!-- Profile Icon -->
+      <a href="#profile" class="text-white hover:text-gray-200 flex items-center">
+        <i class="fas fa-user-circle mr-2"></i>Profile
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="py-12">
+    <div class="container mx-auto px-6">
+      <!-- Subject Selection Section -->
+      <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Select a Subject</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Subjects -->
+          <div onclick="showTopics('Mathematics')" class="subject-card bg-green-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-green-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Mathematics</h3>
+          </div>
+          <div onclick="showTopics('Chemistry')" class="subject-card bg-blue-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-blue-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Chemistry</h3>
+          </div>
+          <div onclick="showTopics('Biology')" class="subject-card bg-red-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-red-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Biology</h3>
+          </div>
+          <div onclick="showTopics('Physics')" class="subject-card bg-purple-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-purple-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Physics</h3>
+          </div>
+          <div onclick="showTopics('Kiswahili')" class="subject-card bg-yellow-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-yellow-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Kiswahili</h3>
+          </div>
+          <div onclick="showTopics('English')" class="subject-card bg-orange-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-orange-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">English</h3>
+          </div>
+          <div onclick="showTopics('Geography')" class="subject-card bg-teal-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-teal-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Geography</h3>
+          </div>
+          <div onclick="showTopics('Business Studies')" class="subject-card bg-indigo-600 text-white p-6 rounded-lg text-center cursor-pointer hover:bg-indigo-700 transform hover:scale-105 transition duration-300">
+            <h3 class="text-xl font-semibold">Business Studies</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topic Selection Section (Dynamic) -->
+      <div id="topic-selection" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Select a Topic</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Topics will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Start Quiz Button -->
+      <div class="text-center">
+        <a href="#quiz-questions" class="bg-green-600 text-white text-lg font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition duration-300">Start Quiz</a>
+      </div>
+
+      <!-- Quiz Questions Section (hidden initially) -->
+      <div id="quiz-questions" class="mt-12 hidden">
+        <!-- Example question -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. What is the capital of France?</h2>
+          <div class="space-y-4">
+            <label class="flex items-center">
+              <input type="radio" name="q1" class="mr-3"> Paris
+            </label>
+            <label class="flex items-center">
+              <input type="radio" name="q1" class="mr-3"> London
+            </label>
+            <label class="flex items-center">
+              <input type="radio" name="q1" class="mr-3"> Berlin
+            </label>
+            <label class="flex items-center">
+              <input type="radio" name="q1" class="mr-3"> Madrid
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-8">
+          <a href="#result" class="bg-green-600 text-white text-lg font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition duration-300">Submit Quiz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>&copy; 2025 Quiz Platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript function to display topics based on selected subject
+    function showTopics(subject) {
+      const topicsSection = document.getElementById('topic-selection');
+      topicsSection.innerHTML = ''; // Clear previous topics
+      const topics = {
+        'Mathematics': ['Algebra', 'Geometry', 'Trigonometry'],
+        'Chemistry': ['Organic Chemistry', 'Inorganic Chemistry', 'Physical Chemistry'],
+        'Biology': ['Cell Biology', 'Genetics', 'Ecology'],
+        'Physics': ['Mechanics', 'Optics', 'Thermodynamics'],
+        'Kiswahili': ['Grammar', 'Literature', 'Comprehension'],
+        'English': ['Grammar', 'Literature', 'Comprehension'],
+        'Geography': ['Map Reading', 'Physical Geography', 'Human Geography'],
+        'Business Studies': ['Financial Management', 'Marketing', 'Economics'],
+      };
+
+      topics[subject].forEach(topic => {
+        const topicCard = document.createElement('div');
+        topicCard.classList.add('topic-card', 'bg-blue-500', 'text-white', 'p-6', 'rounded-lg', 'text-center', 'cursor-pointer', 'hover:bg-blue-600', 'transform', 'hover:scale-105', 'transition', 'duration-300');
+        topicCard.innerHTML = `<h3 class="text-xl font-semibold">${topic}</h3>`;
+        topicsSection.appendChild(topicCard);
+      });
+    }
+  </script>
+  
+</body>
+</html>

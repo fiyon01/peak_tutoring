@@ -1,0 +1,55 @@
+*** Authorization Request in NodeJS ***|
+ 
+var unirest = require("unirest");
+var req = unirest("GET", "https://sandbox.safaricom.co.ke/oauth/v1/generate");
+ 
+req.query({
+ "grant_type": "client_credentials"
+});
+ 
+req.headers({
+ "Authorization": "Basic SWZPREdqdkdYM0FjWkFTcTdSa1RWZ2FTSklNY001RGQ6WUp4ZVcxMTZaV0dGNFIzaA=="
+});
+ 
+req.end(res => {
+ if (res.error) throw new Error(res.error);
+ console.log(res.body);
+
+
+
+secret  = 6oeWdM5a8ZD1rkpbye12KoqDitkiSZAWypVGCDCG19EylKH0tYHoWxtzEDXTmazE
+
+consumer key = MfNGtyOJicJiwpGDP6r5I9UMuDxpMtjaBJrRZPfzyB6oy9RI
+
+
+VBYKZGWls2KnolCXdcnHArBFYLhzqsh3CyAO6NqezKGh6kSzQ5gvo4ZSBUvNuBoJDXk9FF0eV4o3IspGK461Ed810G++7nxLP2QV2kSlEm/CdMe6kmWyuGqhEax2gH1hqjMfg6eQGPiil6x2ZVFe8B4hDWMCcFBLbkp9ZK4ha7ej7fQ866LNDZ1y42cwRzQvq8EgXE1O+BYT3DhPTvBK4l2D6uvyVorhWRyC3jy5eNg95gxLdnTrs51NZzVcEtW04WPzTOzEXFxz3adV6WcQux7WXkIuLPEy6WmBTSrgpTxEscUvCo/QDuQNYarV/1hd0BNkK49VDetCy0NC2gNeVw==
+
+
+authorization    = https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+
+
+passkey = bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
+
+short code =  174379
+
+rewuest = https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest
+
+
+
+{    
+    "BusinessShortCode": "174379",    
+    "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTYwMjE2MTY1NjI3",    
+    "Timestamp":"20160216165627",    
+    "TransactionType": "CustomerPayBillOnline",    
+    "Amount": "1",    
+    "PartyA":"254708374149",    
+    "PartyB":"174379",    
+    "PhoneNumber":"254708374149",    
+    "CallBackURL": "https://mydomain.com/pat",    
+    "AccountReference":"Test",    
+    "TransactionDesc":"Test"
+ }
+
+
+
+

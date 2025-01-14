@@ -1,0 +1,12 @@
+<div class="overlay fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-90 z-50">
+    <div class="relative flex justify-center items-center">
+      <!-- Spinner -->
+      <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+      <!-- Image inside spinner -->
+      <img 
+        src="\images\avatar-thinking-9-svgrepo-com.svg" 
+        class="rounded-full h-28 w-28" 
+        alt="Thinking Avatar">
+    </div>
+  </div>
+
